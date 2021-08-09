@@ -78,3 +78,15 @@ LogitModelUnder=LogisticRegression()
 LogitModelUnder.fit(X_under,y_under)
  ```
  We use the estimators that were derived from the under sampled data on our original test data set and see how it performs. 
+```
+y_pred_under=LogitModelUnder.predict(X_test)
+UnderLogitAccuracy=accuracy_score(y_test,y_pred_under)
+UnderLogitClass=classification_report(y_test,y_pred_under)
+UnderLogitMx=confusion_matrix(y_test,y_pred_under).ravel()
+UnderLogitMCC=matthews_corrcoef(y_test,y_pred_under)
+[print(i) for i in ['UNDER SAMPLE',UnderLogitAccuracy,UnderLogitClass,UnderLogitMx,UnderLogitMCC]]
+ ```
+| Contingency Table|Accuracy| Precision| Recall|F1|Matthews Coef.|
+|------------------|--------|----------|-------|--|--------------|
+|<table> <thead> <tr>  <th></th> <th>Predicted Events</th>    <th>Predicted Non-Events</th>    <tbody>  <tr>  <td>Actual Events</td>   <td>1003</td> <td>796</td> </tr>  <tr> <td>Actual Non-Events</td>  <td>6,468</td> <td>10,483</td> </tbody> </table>   | 0.61 |  0.13      | 0.56      | 0.22 | 0.10             |
+  
