@@ -72,3 +72,9 @@ Our Precision is 0.28.  The model  predicted an event on 1,205 observations and 
 The recall is .19. Of 1,799 events in the sample we only predicted 336 of them.<br>
 The F1 Score is .22 which is low and the Matthews Correlation Coefficient is 0.16 which is fairly low. However, this is still an improvement over our first model<br>
   
+## Logit Model with Under Sampled data
+ ```
+LogitModelUnder=LogisticRegression()
+LogitModelUnder.fit(X_under,y_under)
+ ```
+ We use the estimators that were derived from the under sampled data on our original test data set and see how it performs. 
