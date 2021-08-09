@@ -1,5 +1,5 @@
-# Imbalanced Data <br>
-##An overview of working with imbalanced data<br>
+# Imbalanced Data  <br>
+## An overview of working with imbalanced data<br>
 Import all python packages we will be using
 ```
 from sklearn.datasets import make_classification
@@ -27,7 +27,7 @@ undersample = RandomUnderSampler(sampling_strategy=1,  random_state=2)
 X_under, y_under = undersample.fit_resample(X_train, y_train)
 ```
 We will create 3 Logit Models with our 3 data sets, and determine which one performs best.<br>
-##Logit Model with original distribution
+## Logit Model with original distribution
 ```
 LogitModel=LogisticRegression()
 LogitModel=LogisticRegression()
@@ -40,3 +40,7 @@ NormalLogitMx=confusion_matrix(y_test,y_pred).ravel()
 NormalLogitMCC=matthews_corrcoef(y_test,y_pred)
 print(i for i in ['NORMAL LOGIT',NormalLogitAccuracy,NormalLogitClass,NormalLogitMx,NormalLogitMCC])
 ```
+| Contingency Table|Accuracy| Precision| Recall|F1|Matthews Coef.|
+|------------------|--------|----------|-------|--|--------------|
+|<table> <thead> <tr>  <th></th> <th>Predicted Events</th>    <th>Predicted Non-Events</th>    <tbody>  <tr>  <td>Actual Events</td>   <td>34</td> <td>1,765</td> </tr>  <tr> <td>Actual Non-Events</td>  <td>2</td> <td>16,549</td> </tbody> </table>   | 0.905 |  0.94      | 0.2      | 0.04 | 0.126             |
+
