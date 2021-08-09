@@ -43,4 +43,32 @@ print(i for i in ['NORMAL LOGIT',NormalLogitAccuracy,NormalLogitClass,NormalLogi
 | Contingency Table|Accuracy| Precision| Recall|F1|Matthews Coef.|
 |------------------|--------|----------|-------|--|--------------|
 |<table> <thead> <tr>  <th></th> <th>Predicted Events</th>    <th>Predicted Non-Events</th>    <tbody>  <tr>  <td>Actual Events</td>   <td>34</td> <td>1,765</td> </tr>  <tr> <td>Actual Non-Events</td>  <td>2</td> <td>16,549</td> </tbody> </table>   | 0.905 |  0.94      | 0.2      | 0.04 | 0.126             |
-
+  
+If one is just looking at just the accuracy, they would think this a good model. However, we know that only 10% of the observations are events. If we just predicted that all observations would be non-events, we would get the same accuracy, so that is not a good metric to use when you have sparse data.<br>
+Our Precision is 0.94, this looks good, but look at the contingency table. The model only predicted an event on 36 observations. <br>
+The recall is .02. Of 1,799 events in the sample we only predicted 34 of them.<br>
+The F1 Score is .04 which is low and the Matthews Correlation Coefficient is 0.12 which is fairly low.<br>
+  
+## Logit Model with Over Sampled data
+```
+LogitModelOver=LogisticRegression()
+LogitModelOver.fit(X_over,y_over)
+```
+We use the estimators the were derived from the over sampled data on our original test data set and see how it performs. 
+```
+y_pred_over=LogitModelOver.predict(X_test)
+OverLogitAccuracy=accuracy_score(y_test,y_pred_over)
+OverLogitClass=classification_report(y_test,y_pred_over)
+OverLogitMx=confusion_matrix(y_test,y_pred_over).ravel()
+OverLogitMCC=matthews_corrcoef(y_test,y_pred_over)
+[print(i) for i in ['OVER SAMPLE',OverLogitAccuracy,OverLogitClass,OverLogitMx,OverLogitMCC]]
+```
+| Contingency Table|Accuracy| Precision| Recall|F1|Matthews Coef.|
+|------------------|--------|----------|-------|--|--------------|
+|<table> <thead> <tr>  <th></th> <th>Predicted Events</th>    <th>Predicted Non-Events</th>    <tbody>  <tr>  <td>Actual Events</td>   <td>336</td> <td>1,463</td> </tr>  <tr> <td>Actual Non-Events</td>  <td>869</td> <td>16,082</td> </tbody> </table>   | 0.87 |  0.28      | 0.19      | 0.22 | 0.16             |
+  
+If one is just looking at just the accuracy, they would think this a good model. However, we know that only 10% of the observations are events. If we just predicted that all observations would be non-events, we would get the same accuracy, so that is not a good metric to use when you have sparse data.<br>
+Our Precision is 0.94, this looks good, but look at the contingency table. The model only predicted an event on 36 observations. <br>
+The recall is .02. Of 1,799 events in the sample we only predicted 34 of them.<br>
+The F1 Score is .22 which is low and the Matthews Correlation Coefficient is 0.16 which is fairly low.<br>
+  
