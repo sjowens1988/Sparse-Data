@@ -10,8 +10,8 @@ from sklearn.linear_model import LogisticRegression
 from imblearn.under_sampling import RandomUnderSampler
 from imblearn.over_sampling import RandomOverSampler
 ```
-We will use SciKit-Learn to create a dataframe with 40 variables, 10 of which have relevent information, 10% of the observations are classified as events, and the clusters are closer together. <br>
-We will create 3 training data sets. One that will have the share the same distribution as the original data, one that uses oversampled data, and one that uses undersampled data.
+We will use SciKit-Learn to create a dataframe with 40 variables, 10 of which have relevent information, 10% of the observations are classified as events.<br>
+We will create 3 training data sets. One that will have the same distribution as the sample data, one that uses oversampled data, and one that uses undersampled data.
 ```
 X,y = make_classification(n_samples=2500,n_informative=10 ,n_features=40, n_redundant=20,n_clusters_per_class=2, weights=[0.9], flip_y=0,class_sep=.5,random_state=15)
 X_train,X_test, y_train, y_test = train_test_split(X, y,  random_state=2)
