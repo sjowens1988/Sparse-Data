@@ -16,7 +16,7 @@ We will create 3 training data sets. One that will have the same distribution as
 X,y = make_classification(n_samples=2500,n_informative=10 ,n_features=40, n_redundant=20,n_clusters_per_class=2, weights=[0.9], flip_y=0,class_sep=.5,random_state=15)
 X_train,X_test, y_train, y_test = train_test_split(X, y,  random_state=2)
 ```
-The number of our observations in our oversampled data is dependent upon the sampling strategy parameter. The number of non events stays constant and the number of events is equal to *(NumberofNonEvents-NumberofEvents) X SamplingStrategyParameter* for a total number of observations of *(Number of Non-Events-Number of Events) X sampling strategy parameter + Number of Non-Events*. In this case, we have 845 events and 1,691 non-events.<br>
+The number of our observations in our oversampled data is dependent upon the sampling strategy parameter. The number of non events stays constant and the number of events is equal to *(NumberofNonEvents-NumberofEvents) X SamplingStrategyParameter*.The total number of observations is equal to *(Number of Non-Events-Number of Events) X sampling strategy parameter + Number of Non-Events*. In this case, we have 845 events and 1,691 non-events for a total of 2,536 observations.<br>
 The number of observations in our undersampled data is 368. This is derived from the equation *NumberofEvents/SamplingStrategyParameter*. 
 ```
 #Over Sampled Data
