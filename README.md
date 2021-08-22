@@ -30,7 +30,6 @@ We will create 3 Logit Models with our 3 data sets, and determine which one perf
 ## Logit Model with original distribution
 ```
 LogitModel=LogisticRegression()
-LogitModel=LogisticRegression()
 LogitModel.fit(X_train,y_train)
 y_pred=LogitModel.predict(X_test)
 accuracy_score(y_test,y_pred)
