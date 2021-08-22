@@ -95,5 +95,5 @@ The recall is .78. Of 65 events in the sample we only predicted 51 of them.<br>
 The F1 Score is .39 and the Matthews Correlation Coefficient is 0.34 . This is an improvement over our first model, but slightly worse performing than our second model.<br>
    
 ## What Model to Use?
-There is no right answer. It deponds on the situtation. If the cost of taking action on a predicted event is low, a larger recall is better. If the cost of taking action is higher, a higher precision is better. You should also look at the contingency tables as well, you could have a precision of 1.0, but if it's only making predicitions on 1 observation, the model not very useful.
+There is no right answer, it deponds on the situtation. We see that the over and undersampling models performed better than the normally distributed data. If the cost of taking action on a predicted event is low, a larger recall is better. If the cost of taking action is higher, a higher precision is better. You should also look at the contingency tables as well, you could have a precision of 1.0, but if it's only making predicitions on 1 observation, the model not very useful.
  
